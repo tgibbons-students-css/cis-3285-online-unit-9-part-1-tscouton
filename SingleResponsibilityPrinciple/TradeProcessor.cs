@@ -68,6 +68,18 @@ namespace SingleResponsibilityPrinciple
                 return false;
             }
 
+            if (tradeAmount < 1000)
+            {
+                LogMessage("WARN", "Trade amount is less than 1000", currentLine, fields[1]);
+                return false;
+            }
+
+            if (tradeAmount > 10000)
+            {
+                LogMessage("WARN", "Trade amount is more than 10000", currentLine, fields[1]);
+                return false;
+            }
+
             decimal tradePrice;
             if (!decimal.TryParse(fields[2], out tradePrice))
             {
